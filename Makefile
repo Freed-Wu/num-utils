@@ -52,17 +52,14 @@ all: manpages
 		mv $$file.out $$file ; chmod a+x $$file ; done
 
 install:
-	install -m 0755 -o 0 -g 0 -d		$(BINDIR)
 	for util in $(UTILS) ; do \
-	    install -m 0755 -o 0 -g 0 $$util	$(BINDIR) ; done
+	    install -Dm 0755 $$util	$(BINDIR) ; done
 
-	install -m 0755 -o 0 -g 0 -d		$(DOCDIR)
 	for doc in $(DOCS) ; do \
-	    install -m 0644 -o 0 -g 0 $$doc	$(DOCDIR) ; done
+	    install -Dm 0644 $$doc	$(DOCDIR) ; done
 
-	install -m 0755 -o 0 -g 0 -d		$(MANDIR)
 	for man in $(UTILS) ; do \
-		install -m 0644 -o 0 -g 0 $$man.1.gz $(MANDIR) ; done
+		install -Dm 0644 $$man.1.gz $(MANDIR) ; done
 
 uninstall:
 	for util in $(UTILS) ; do \
